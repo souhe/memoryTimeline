@@ -1,0 +1,36 @@
+@import 'variables/colors';
+@import 'mixins/fontStyles';
+
+//styles 
+body{
+    .basic-fonts();
+    background: @Cdark;
+    margin: 0;
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: normal;
+    }
+
+}
+
+textarea:focus, input:focus{
+    outline: 0;
+}
+
+.text-h2{
+    textarea, p, input, span{
+        font-size: 1.4rem;    
+    }
+}
+
+.editor{
+    .question{
+        border-top: solid 1px gray;
+        border-bottom: solid 1px gray;
+        margin: 10px 0;
+        background: white;
+        display: flex;
+    }
+}
+
+
