@@ -17,7 +17,7 @@ gulp.task("connect", function(){
     connect.server({
         root: 'dist',
         livereload: true,
-        port: 8001
+        port: 8003
       });
 });
 
@@ -31,10 +31,10 @@ gulp.task('build-less', function(){
 gulp.task('copy', function() {
     gulp.src('src/index.html')
       .pipe(gulp.dest('dist'));
-    
+
     gulp.src('src/css/*.*')
       .pipe(gulp.dest('./dist/css'));
-    
+
     gulp.src('src/font/*.*')
       .pipe(gulp.dest('./dist/font'));
 });
@@ -43,10 +43,10 @@ gulp.task('default', ['build-less', 'webpack', 'copy']);
 
 gulp.task('watch', function() {
     connect.server({
-        root: 'dist',
-        livereload: true,
-        port: 8001
-      });
+       root: 'dist',
+       livereload: true,
+       port: 8003
+     });
     gulp.watch('src/**/*.less', ['build-less']);
     gulp.watch(['src/css/*.*', 'src/**/*.html', 'src/css/*.*'], ['copy']);
     gulp.watch(['src/**/*.js', 'src/**/*.jsx'], ['webpack']);
