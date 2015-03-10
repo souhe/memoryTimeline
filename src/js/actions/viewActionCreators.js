@@ -8,6 +8,14 @@ var ViewActionCreators = {
             type: ActionTypes.GET_TIMELINE
         });
         OnedriveApi.getTimeline();
+    },
+
+    initAuthentication: function(){
+        OnedriveApi.initAuthentication();
+    },
+
+    logIn: function(){
+        OnedriveApi.logInAndGetProfile();
     }
 };
 

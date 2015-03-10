@@ -1,23 +1,30 @@
 var React = require('react');
 var TimelineStore = require('../stores/timelineStore.js');
+var AccountStore = require('../stores/accountStore.js');
 var ViewActionCreators = require('../actions/viewActionCreators.js');
 
 var Timeline = React.createClass({
     componentDidMount: function(){
-        TimelineStore.addEventListener(this.handleStoreChange);
-        ViewActionCreators.getTimelineData();
+        TimelineStore.addEventListener(this.handleStoresChange);
+        AccountStore.addEventListener(this.handleStoresChange);
+        // ViewActionCreators.getTimelineData();
     },
 
     componentWillUnmount: function(){
-        TimelineStore.removeEventListener(this.handleStoreChange);
+        TimelineStore.removeEventListener(this.handleStoresChange);
+        ViewActionCreators.removeEventListener(this.handleStoresChange);
     },
 
     getInitialState: function(){
         return {};
     },
 
-    handleStoreChange: function(){
-        this.setState({events: TimelineStore.getTimeline().events});
+    handleStoresChange: function(){
+        this.setState({events: TimelineStore.getTimeline().events, isLoggedIn: AccountStore.isLoggedIn()});
+    },
+
+    handleFileClick: function(){
+        ViewActionCreators.getTimelineData();
     },
 
     render: function(){
@@ -27,8 +34,10 @@ var Timeline = React.createClass({
             );
         }): null;
 
+        var files = this.state.isLoggedIn? <a href="#" onClick={this.handleFileClick}>open timeline.js</a> : null;
+
         return (
-            <div>{events}</div>
+            <div>{events || files}</div>
         );
     }
 });

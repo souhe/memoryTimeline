@@ -1,14 +1,16 @@
 var React = require('react');
-var LoginStore = require('../stores/loginStore.js'); //TODO
+var AccountStore = require('../stores/accountStore.js');
 var ViewActionCreators = require('../actions/viewActionCreators.js');
+var request = require('superagent');
 
 var Timeline = React.createClass({
     componentDidMount: function(){
-        LoginStore.addEventListener(this.handleStoreChange);
+        AccountStore.addEventListener(this.handleStoreChange);
+        ViewActionCreators.initAuthentication();
     },
 
     componentWillUnmount: function(){
-        LoginStore.removeEventListener(this.handleStoreChange);
+        AccountStore.removeEventListener(this.handleStoreChange);
     },
 
     getInitialState: function(){
@@ -16,17 +18,27 @@ var Timeline = React.createClass({
     },
 
     handleStoreChange: function(){
-        this.setState({events: TimelineStore.getTimeline().events});
+        var accountData = AccountStore.getAccountInfo();
+        this.setState({
+            name: accountData.name,
+            photo: accountData.photo
+        });
+
+        //TODO: change
+        // if(AccountStore.isLoggedIn()){
+        //     ViewActionCreators.getTimelineData();
+        // }
     },
 
     handleLoginClick: function(){
-
+        ViewActionCreators.logIn();
     },
 
     render: function(){
         return (
             <div>
-                <button onClick="handleLoginClick">Log In</button>
+                <button onClick={this.handleLoginClick}>Log In</button>
+                <div>{this.state.name}</div>
             </div>
         );
     }

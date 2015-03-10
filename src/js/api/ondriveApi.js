@@ -1,11 +1,35 @@
 var Dispatcher = require('../dispatchers/memoryTimelineDispatcher.js');
 var ActionTypes = require('../constants/actionTypes.js');
 var request = require('superagent');
-var odauth = require('../utils/odauth.js');
+var ApiActionCreators = require('../actions/apiActionCreators.js');
+var hello = require('../../../bower_components/hello/dist/hello.all.js');
 
 var OneDriveApi = {
-    logIn: function(){
-        //TODO
+
+    initAuthentication: function(){
+        hello.init({
+            windows  : '0000000040149208'
+        },{redirect_uri:'http://memorytimeline.lunet123.pl/redirect.html'});
+    },
+
+    logInAndGetProfile: function(){
+        hello('windows').login({scope: 'wl.skydrive'}).then(function(r){
+            var token = hello('windows').getAuthResponse().access_token;
+            var account = {
+                token: token
+            };
+
+            hello( r.network ).api( '/me' ).then( function(p){
+                var account = {
+                    token: token,
+                    name: p.name,
+                    photo: p.thumnibal
+                };
+                ApiActionCreators.loggedIn(account);
+        	});
+        }, function(err){
+            console.log("ERROR", err)
+        });
     },
 
     logOut: function(){
@@ -13,8 +37,6 @@ var OneDriveApi = {
     },
 
     getTimeline: function(){
-        //TODO
-        odauth();
         request
             .get('https://api.onedrive.com/v1.0/drive/root:/timeline.json:/content')
             .end(function(error, res){
@@ -33,10 +55,7 @@ var OneDriveApi = {
             }]
         };
 
-        Dispatcher.handleApiAction({
-            type: ActionTypes.GET_TIMELINE_SUCCESS,
-            timeline: data
-        });
+        ApiActionCreators.getTimelineSuccess(data);
     }
 };
 
