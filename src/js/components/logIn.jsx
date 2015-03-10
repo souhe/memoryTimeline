@@ -39,6 +39,7 @@ var Timeline = React.createClass({
             <div>
                 <button onClick={this.handleLoginClick}>Log In</button>
                 <div>{this.state.name}</div>
+                <img src={this.state.photo} width="24" />
             </div>
         );
     }

@@ -29,6 +29,10 @@ var AccountStore = assign({
         return _state.isLoggedIn;
     },
 
+    getToken: function(){
+        return _state.authenticateToken;
+    },
+
     getAccountInfo: function(){
         return {
             name: _state.name,
