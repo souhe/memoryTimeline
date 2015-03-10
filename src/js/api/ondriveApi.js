@@ -18,6 +18,7 @@ var OneDriveApi = {
         var session = hello('windows').getAuthResponse();
 
         if(this.isOnline(session)){
+            //TODO: move to function
             hello( session.network ).api( '/me' ).then( function(p){
                 var account = {
                     token: session.access_token,
@@ -50,7 +51,7 @@ var OneDriveApi = {
     },
 
     logOut: function(){
-        //TODO
+        //TODO: implemment
     },
 
     getTimeline: function(){

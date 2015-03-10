@@ -3,6 +3,8 @@ var TimelineStore = require('../stores/timelineStore.js');
 var AccountStore = require('../stores/accountStore.js');
 var ViewActionCreators = require('../actions/viewActionCreators.js');
 
+var Event = require('./event.jsx');
+
 var Timeline = React.createClass({
     componentDidMount: function(){
         TimelineStore.addEventListener(this.handleStoresChange);
@@ -30,8 +32,12 @@ var Timeline = React.createClass({
     render: function(){
         var events = this.state.events? this.state.events.map(function(item){
             return (
-                <div>{item.name}</div>
+                <Event
+                    title={item.title}
+                    description={item.description}>
+                </Event>
             );
+
         }): null;
 
         var files = this.state.isLoggedIn? <a href="#" onClick={this.handleFileClick}>open timeline.js</a> : null;
