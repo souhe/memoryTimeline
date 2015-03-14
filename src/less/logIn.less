@@ -1,0 +1,68 @@
+@import 'variables/colors';
+
+.login{
+
+}
+
+.button {
+    cursor: pointer;
+	float: left;
+	min-width: 150px;
+	max-width: 250px;
+	display: block;
+	margin: 1em;
+	padding: 1em 2em;
+	border: none;
+	background: none;
+	color: @CLight2;
+	vertical-align: middle;
+	position: relative;
+	z-index: 1;
+
+    font-weight: 300;
+    border: 3px solid @CLight;
+
+    &:focus {
+    	outline: none;
+    }
+
+    .animated-button();
+}
+
+.animated-button() {
+	overflow: hidden;
+
+    &:after {
+        content: '';
+    	position: absolute;
+    	z-index: -1;
+    	-webkit-transition: all 0.3s;
+    	-moz-transition: all 0.3s;
+    	transition: all 0.3s;
+
+    	width: 0;
+    	height: 103%;
+    	top: 50%;
+    	left: 50%;
+    	background: @CLight2;
+    	opacity: 0;
+    	-webkit-transform: translateX(-50%) translateY(-50%);
+    	-moz-transform: translateX(-50%) translateY(-50%);
+    	-ms-transform: translateX(-50%) translateY(-50%);
+    	transform: translateX(-50%) translateY(-50%);
+    }
+
+    &:active, &:hover {
+    	color: @CBase;
+    }
+
+    &:hover:after {
+    	width: 90%;
+    	opacity: 1;
+    }
+
+    &:active:after {
+    	width: 101%;
+    	opacity: 1;
+    }
+}

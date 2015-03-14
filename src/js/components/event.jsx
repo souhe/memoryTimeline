@@ -18,6 +18,7 @@ var Event = React.createClass({
                 <h1 className="title">{this.props.title}</h1>
                 <div className="description">{this.props.description}</div>
                 <ul>{people}</ul>
+                
             </div>
         );
     }

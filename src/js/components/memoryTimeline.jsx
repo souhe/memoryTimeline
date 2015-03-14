@@ -1,13 +1,13 @@
 var React = require('react');
-var Timeline = require('./timeline.jsx');
 var Login = require('./logIn.jsx');
-//var Menu = require('./menu.jsx');
+var Menu = require('./menu.jsx');
+var Timeline = require('./timeline.jsx');
 
 var MemoryTimeline = React.createClass({
     render: function(){
         return (
-            <div>
-                <Login />
+            <div className="main-container">
+                <Menu />
                 <Timeline />
             </div>
         );

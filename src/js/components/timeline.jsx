@@ -43,7 +43,7 @@ var Timeline = React.createClass({
         var files = this.state.isLoggedIn? <a href="#" onClick={this.handleFileClick}>open timeline.js</a> : null;
 
         return (
-            <div>{events || files}</div>
+            <div className="timeline">{events || files}</div>
         );
     }
 });

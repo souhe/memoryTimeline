@@ -23,11 +23,6 @@ var Timeline = React.createClass({
             name: accountData.name,
             photo: accountData.photo
         });
-
-        //TODO: change
-        // if(AccountStore.isLoggedIn()){
-        //     ViewActionCreators.getTimelineData();
-        // }
     },
 
     handleLoginClick: function(){
@@ -36,8 +31,8 @@ var Timeline = React.createClass({
 
     render: function(){
         return (
-            <div>
-                <button onClick={this.handleLoginClick}>Log In</button>
+            <div className="login">
+                <button onClick={this.handleLoginClick} className="button btn btn-1d">Log In</button>
                 <div>{this.state.name}</div>
                 <img src={this.state.photo} width="24" />
             </div>
