@@ -51,7 +51,9 @@ var OneDriveApi = {
     },
 
     logOut: function(){
-        //TODO: implemment
+        hello('windows').logout().then(function(r){
+            ApiActionCreators.loggedOut();
+        })
     },
 
     getTimeline: function(){

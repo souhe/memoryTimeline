@@ -33,6 +33,14 @@ var AccountStore = assign({
         return _state.authenticateToken;
     },
 
+    getStatus: function(){
+        return {
+            isLoggedIn: _state.isLoggedIn,
+            token: _state.authenticateToken,
+            inProgress: _state.inProgress
+        }
+    },
+
     getAccountInfo: function(){
         return {
             name: _state.name,
@@ -50,8 +58,24 @@ AccountStore.dispatchToken = memoryTimelineDispatcher.register(function(payload)
                     isLoggedIn: true,
                     authenticateToken: action.account.token,
                     photo: action.account.photo,
-                    name: action.account.name
+                    name: action.account.name,
+                    inProgress: false
                 };
+                AccountStore.emitChange();
+                break;
+            case ActionTypes.LOGGED_OUT:
+                _state = {
+                    isLoggedIn: false,
+                    authenticateToken: null,
+                    photo: '',
+                    name: '',
+                    inProgress: false
+                };
+                AccountStore.emitChange();
+                break;
+            case ActionTypes.LOG_IN_START:
+            case ActionTypes.LOG_OUT_START:
+                _state.inProgress = true;
                 AccountStore.emitChange();
                 break;
         }

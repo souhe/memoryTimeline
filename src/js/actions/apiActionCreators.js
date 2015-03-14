@@ -11,6 +11,12 @@ var ViewActionCreators = {
         });
     },
 
+    loggedOut: function(account){
+        Dispatcher.handleApiAction({
+            type: ActionTypes.LOGGED_OUT,
+        });
+    },
+
     getTimelineSuccess: function(data){
         Dispatcher.handleApiAction({
             type: ActionTypes.GET_TIMELINE_SUCCESS,

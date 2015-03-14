@@ -1,5 +1,4 @@
 var React = require('react');
-var Login = require('./logIn.jsx');
 var Menu = require('./menu.jsx');
 var Timeline = require('./timeline.jsx');
 

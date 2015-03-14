@@ -1,7 +1,84 @@
 @import 'variables/colors';
 
 .login{
+    padding: 10px;
+    .login-button{
+        width: 100%;
+        box-sizing: border-box;
+    }
 
+    .account-info{
+        border: 2px solid @CLight;
+        overflow: visible;
+        display: flex;
+        position: relative;
+        box-sizing: border-box;
+        .name{
+            flex: 1;
+            float: left;
+            color: @CLight;
+            box-sizing: border-box;
+            .logout-button();
+        }
+
+        img{
+            float: left;
+            height: 3em;
+            width: 3em;
+            background: @CLight2;
+        }
+
+        &.in-progress{
+            .in-progress();
+        }
+    }
+}
+
+.logout-button(){
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    padding-top: 0.7em ;
+
+    font-weight: 300;
+    &:after {
+        content: attr(data-logout);
+        position: absolute;
+    	z-index: 1;
+    	-webkit-transition: all 0.3s;
+    	-moz-transition: all 0.3s;
+    	transition: all 0.3s;
+
+        padding-top: 1.5em;
+        margin: auto;
+
+    	width: 0;
+    	height: 103%;
+    	top: 50%;
+    	left: 50%;
+    	background: @CLight2;
+    	opacity: 0;
+    	-webkit-transform: translateX(-50%) translateY(-50%);
+    	-moz-transform: translateX(-50%) translateY(-50%);
+    	-ms-transform: translateX(-50%) translateY(-50%);
+    	transform: translateX(-50%) translateY(-50%);
+    }
+
+    &:active, &:hover {
+    	color: @CDark;
+    }
+
+    &:hover:after {
+    	width: 90%;
+    	opacity: 1;
+    }
+
+    &:active:after {
+    	width: 101%;
+    	opacity: 1;
+    }
 }
 
 .button {
@@ -10,17 +87,17 @@
 	min-width: 150px;
 	max-width: 250px;
 	display: block;
-	margin: 1em;
+	// margin: 1em;
 	padding: 1em 2em;
 	border: none;
 	background: none;
-	color: @CLight2;
+	color: @CLight;
 	vertical-align: middle;
 	position: relative;
 	z-index: 1;
 
     font-weight: 300;
-    border: 3px solid @CLight;
+    border: 2px solid @CLight;
 
     &:focus {
     	outline: none;
@@ -53,7 +130,7 @@
     }
 
     &:active, &:hover {
-    	color: @CBase;
+    	color: @CDark;
     }
 
     &:hover:after {
@@ -65,4 +142,48 @@
     	width: 101%;
     	opacity: 1;
     }
+
+    &.in-progress{
+        .in-progress();
+    }
+
+}
+
+.in-progress(){
+    &:before{
+        content: '';
+        position: absolute;
+        z-index: 2;
+
+        width: 100%;
+        height: 6px;
+        bottom: 0px;
+        left: 0;
+        background: @CLight;
+        box-sizing: border-box;
+         -webkit-animation-name: test;
+         -webkit-animation-duration: 3s;
+         -webkit-animation-iteration-count:infinite;
+        // -ms-animation-name: width;
+        // -ms-animation-iteration-count:infinite;
+        // animation-name: test;
+        // animation-duration: 2s;
+        // animation-iteration-count:infinite;
+    }
+}
+
+@-webkit-keyframes test {
+    0%{
+        width: 0;
+        left: 0;
+    }
+    50%{
+        width: 100%;
+        left: 0;
+    }
+    100%{
+        width: 0;
+        left: 100%;
+    }
+
 }

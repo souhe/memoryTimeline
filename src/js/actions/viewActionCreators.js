@@ -15,7 +15,17 @@ var ViewActionCreators = {
     },
 
     logIn: function(){
+        Dispatcher.handleViewAction({
+            type: ActionTypes.LOG_IN_START
+        });
         OnedriveApi.logInAndGetProfile();
+    },
+
+    logOut: function(){
+        Dispatcher.handleViewAction({
+            type: ActionTypes.LOG_OUT_START
+        });
+        OnedriveApi.logOut();
     }
 };
 

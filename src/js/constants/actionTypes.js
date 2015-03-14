@@ -7,6 +7,9 @@ module.exports = keymirror({
     GET_TIMELINE_SUCCESS: null,
 
     LOGGED_IN: null,
+    LOG_IN_START: null,
+    LOGGED_OUT: null,
+    LOG_OUT_START: null,
 
     ADD_EVENT: null,
     REMOVE_EVENT: null

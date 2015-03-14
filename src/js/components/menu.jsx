@@ -1,5 +1,5 @@
 var React = require('react');
-var LogIn = require('./logIn.jsx');
+var LogIn = require('./login/logIn.jsx');
 
 var  Menu = React.createClass({
     render: function() {

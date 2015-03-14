@@ -8,6 +8,7 @@
   },
   "author": "souhe",
   "dependencies": {
+    "classnames": "^1.1.4",
     "flux": "^2.0.1",
     "gulp": "^3.8.8",
     "gulp-concat": "^2.2.0",
