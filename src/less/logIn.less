@@ -1,4 +1,5 @@
 @import 'variables/colors';
+@import 'mixins/lessPrefixer.less';
 
 .login{
     padding: 10px;
@@ -47,9 +48,7 @@
         content: attr(data-logout);
         position: absolute;
     	z-index: 1;
-    	-webkit-transition: all 0.3s;
-    	-moz-transition: all 0.3s;
-    	transition: all 0.3s;
+    	.transition(all 0.3s);
 
         padding-top: 1.5em;
         margin: auto;
@@ -60,10 +59,7 @@
     	left: 50%;
     	background: @CLight2;
     	opacity: 0;
-    	-webkit-transform: translateX(-50%) translateY(-50%);
-    	-moz-transform: translateX(-50%) translateY(-50%);
-    	-ms-transform: translateX(-50%) translateY(-50%);
-    	transform: translateX(-50%) translateY(-50%);
+    	.transform(translateX(-50%) translateY(-50%));
     }
 
     &:active, &:hover {
@@ -113,9 +109,7 @@
         content: '';
     	position: absolute;
     	z-index: -1;
-    	-webkit-transition: all 0.3s;
-    	-moz-transition: all 0.3s;
-    	transition: all 0.3s;
+    	.transition(all 0.3s);
 
     	width: 0;
     	height: 103%;
@@ -123,10 +117,7 @@
     	left: 50%;
     	background: @CLight2;
     	opacity: 0;
-    	-webkit-transform: translateX(-50%) translateY(-50%);
-    	-moz-transform: translateX(-50%) translateY(-50%);
-    	-ms-transform: translateX(-50%) translateY(-50%);
-    	transform: translateX(-50%) translateY(-50%);
+    	.transform(translateX(-50%) translateY(-50%));
     }
 
     &:active, &:hover {
@@ -161,18 +152,13 @@
         left: 0;
         background: @CLight;
         box-sizing: border-box;
-         -webkit-animation-name: test;
-         -webkit-animation-duration: 3s;
-         -webkit-animation-iteration-count:infinite;
-        // -ms-animation-name: width;
-        // -ms-animation-iteration-count:infinite;
-        // animation-name: test;
-        // animation-duration: 2s;
-        // animation-iteration-count:infinite;
+         .animation-name(progressbar);
+         .animation-duration(3s);
+         .animation-iteration-count(infinite);
     }
 }
 
-@-webkit-keyframes test {
+.progressbar-frames(){
     0%{
         width: 0;
         left: 0;
@@ -185,5 +171,10 @@
         width: 0;
         left: 100%;
     }
-
 }
+
+@-webkit-keyframes progressbar { .progressbar-frames();}
+@-moz-keyframes progressbar {.progressbar-frames();}
+@-ms-keyframes progressbar {.progressbar-frames();}
+@-o-keyframes progressbar {.progressbar-frames();}
+@keyframes progressbar {.progressbar-frames();}
