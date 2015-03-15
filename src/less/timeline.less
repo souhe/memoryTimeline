@@ -1,5 +1,83 @@
 @import 'variables/colors';
+@import 'mixins/lessPrefixer.less';
 
-.timeline{
+@timelineLeftPadding: 2em;
+@timelineBaseColor: @CDark;
 
+ul.timeline{
+    margin: 0 0 0 2em;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    height: 100%;
+
+    &:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        background: @timelineBaseColor;
+        left: @timelineLeftPadding;
+        margin-left: -10px;
+    }
+
+    >li{
+        .event();
+    }
+
+}
+
+.event(){
+    position: relative;
+    padding: 1em 0;
+    .timeline-dot{
+        position: absolute;
+        left: @timelineLeftPadding;
+        top: 40%;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        background: @CBase;
+        margin: 0 0 0 -18px;
+        box-shadow: 0 0 0 3px @timelineBaseColor;
+
+        .transition(box-shadow 0.3s);
+    }
+
+    .timeline-content{
+        .event-content();
+        position: relative;
+        padding: 1em;
+        border: solid 1px @CDark;
+        border-left-width: 1px;
+        margin-left: 3em;
+
+        &:before{
+            content: '';
+            width: 0;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background: @timelineBaseColor;
+            .transition(all 0.3s);
+        }
+    }
+
+    &:hover .timeline-dot{
+        box-shadow: 0 0 0 6px @timelineBaseColor;
+    }
+
+    &:hover .timeline-content:before{
+        opacity: 1;
+        width: 3px;
+    }
+}
+
+.event-content(){
+    h1{
+        //border-bottom: solid 1px @CBase;
+    }
 }

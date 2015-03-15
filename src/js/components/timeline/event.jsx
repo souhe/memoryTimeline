@@ -15,10 +15,13 @@ var Event = React.createClass({
 
         return (
             <div>
-                <h1 className="title">{this.props.title}</h1>
-                <div className="description">{this.props.description}</div>
-                <ul>{people}</ul>
-                
+                <div className="timeline-dot"></div>
+                <div className="timeline-content">
+                    <h1 className="title">{this.props.title}</h1>
+                    <div className="description">{this.props.description}</div>
+                    <ul>{people}</ul>
+                </div>
+
             </div>
         );
     }
