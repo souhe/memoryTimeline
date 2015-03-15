@@ -32,8 +32,11 @@ gulp.task('copy', function() {
     gulp.src('src/index.html')
       .pipe(gulp.dest('dist'));
 
-    gulp.src('src/css/*.*')
+    gulp.src('node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css')
       .pipe(gulp.dest('./dist/css'));
+
+    gulp.src('src/css/*.*')
+        .pipe(gulp.dest('./dist/css'));
 
     gulp.src('src/font/*.*')
       .pipe(gulp.dest('./dist/font'));
