@@ -1,15 +1,17 @@
 @import 'variables/colors';
 @import 'mixins/lessPrefixer.less';
+@import 'mixins/fontStyles.less';
 
-@timelineLeftPadding: 2em;
+@timelineLeftPadding: 5em;
 @timelineBaseColor: @CDark;
 
 ul.timeline{
+    width: 50em;
     margin: 0 0 0 2em;
     padding: 0 1em 0 0;
     list-style: none;
     position: relative;
-    height: 100%;
+    min-height: 100%;
 
     &:before{
         content: '';
@@ -19,7 +21,7 @@ ul.timeline{
         width: 5px;
         background: @timelineBaseColor;
         left: @timelineLeftPadding;
-        margin-left: -10px;
+        margin-left: -20px;
     }
 
     >li{
@@ -31,6 +33,20 @@ ul.timeline{
 .event(){
     position: relative;
     padding: 1em 0;
+
+    .timeline-date{
+        box-sizing: border-box;
+	    width: @timelineLeftPadding;
+        overflow: hidden;
+        top: 40%;
+	    position: absolute;
+        margin: 0 0 0 -30px;
+        //border-top: solid 1px @timelineBaseColor;
+        padding: 0 15px;
+
+        .date-font();
+    }
+
     .timeline-dot{
         position: absolute;
         left: @timelineLeftPadding;
@@ -39,7 +55,7 @@ ul.timeline{
         width: 20px;
         height: 20px;
         background: @CBase;
-        margin: 0 0 0 -18px;
+        margin: 0 0 0 -28px;
         box-shadow: 0 0 0 3px @timelineBaseColor;
 
         .transition(box-shadow 0.3s);
@@ -51,7 +67,7 @@ ul.timeline{
         padding: 1em;
         border: solid 1px @CDark;
         border-left-width: 1px;
-        margin-left: 3em;
+        margin-left: @timelineLeftPadding;
 
         &:before{
             content: '';

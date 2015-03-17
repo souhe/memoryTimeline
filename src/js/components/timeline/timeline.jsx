@@ -11,7 +11,9 @@ var Timeline = React.createClass({
                 <li>
                     <Event
                         title={item.title}
-                        description={item.description}>
+                        description={item.description}
+                        startDate={item.startDate}
+                        endDate={item.endDate}>                        
                     </Event>
                 </li>
             );

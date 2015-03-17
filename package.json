@@ -16,6 +16,7 @@
     "gulp-webpack": "^1.0.0",
     "jsx-loader": "^0.12.1",
     "keymirror": "^0.1.1",
+    "moment": "^2.9.0",
     "object-assign": "^1.0.0",
     "perfect-scrollbar": "^0.6.1",
     "react": "^0.12.0",

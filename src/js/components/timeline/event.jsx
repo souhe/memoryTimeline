@@ -1,4 +1,5 @@
 var React = require('react');
+var moment = require('moment');
 
 var Event = React.createClass({
     propTypes: {
@@ -13,8 +14,12 @@ var Event = React.createClass({
             return <li>item</li>
         }): null;
 
+        var startDate = moment(this.props.startDate,  ["DD/MM/YYYY", "MM/YYYY"]);
+        var stringStartDate = startDate.format('MMMM YYYY')
+
         return (
             <div>
+                <div className="timeline-date">{stringStartDate}</div>
                 <div className="timeline-dot"></div>
                 <div className="timeline-content">
                     <h1 className="title">{this.props.title}</h1>
