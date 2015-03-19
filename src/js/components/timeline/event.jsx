@@ -1,6 +1,8 @@
 var React = require('react');
 var moment = require('moment');
 
+var EventContent = require('./eventContent.jsx');
+
 var Event = React.createClass({
     propTypes: {
         title: React.PropTypes.string,
@@ -15,18 +17,13 @@ var Event = React.createClass({
         }): null;
 
         var startDate = moment(this.props.startDate,  ["DD/MM/YYYY", "MM/YYYY"]);
-        var stringStartDate = startDate.format('MMMM YYYY')
+        var stringStartDate = startDate.format('MMM YYYY');
 
         return (
             <div>
                 <div className="timeline-date">{stringStartDate}</div>
                 <div className="timeline-dot"></div>
-                <div className="timeline-content">
-                    <h1 className="title">{this.props.title}</h1>
-                    <div className="description">{this.props.description}</div>
-                    <ul>{people}</ul>
-                </div>
-
+                <EventContent title={this.props.title} description={this.props.description} people={people} />
             </div>
         );
     }

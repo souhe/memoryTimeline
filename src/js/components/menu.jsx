@@ -6,6 +6,10 @@ var  Menu = React.createClass({
         return (
             <div className="lefthand-menu">
                 <LogIn />
+                {/*<Toolbox>
+                    <ToolboxIcon className="" tooltip="Add"/>
+                </Toolbox>
+                */}
             </div>
         );
     }
