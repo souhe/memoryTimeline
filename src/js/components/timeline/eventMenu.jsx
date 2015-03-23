@@ -13,18 +13,14 @@ var EventMenu = React.createClass({
     render: function() {
 
         var menu = this.props.isOpen? (
-            <div>
-                MENU:
+            <div className="event-menu">
+
                 <FontIcon className="icon-trash-1" onClick={this.props.onRemoveClick} title="Remove"/>
                 <FontIcon className="icon-pencil-alt" onClick={this.props.onEditClick} title="Edit"/>
             </div>
         ): null;
 
-        return (
-            <div className="event-menu">
-                {menu}
-            </div>
-        );
+        return menu;
     }
 
 });

@@ -1,6 +1,7 @@
 @import 'variables/colors';
 @import 'mixins/lessPrefixer.less';
 @import 'mixins/fontStyles.less';
+@import 'event.less';
 
 @timelineLeftPadding: 5em;
 @timelineBaseColor: @CDark;
@@ -28,73 +29,4 @@ ul.timeline{
         .event();
     }
 
-}
-
-.event(){
-    position: relative;
-    padding: 1em 0;
-
-    .timeline-date{
-        box-sizing: border-box;
-	    width: @timelineLeftPadding;
-        overflow: hidden;
-        top: 40%;
-	    position: absolute;
-        margin: 0 0 0 -30px;
-        //border-top: solid 1px @timelineBaseColor;
-        padding: 0 15px;
-
-        .date-font();
-    }
-
-    .timeline-dot{
-        position: absolute;
-        left: @timelineLeftPadding;
-        top: 40%;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        background: @CBase;
-        margin: 0 0 0 -28px;
-        box-shadow: 0 0 0 3px @timelineBaseColor;
-
-        .transition(box-shadow 0.3s);
-    }
-
-    .timeline-content{
-        .event-content();
-        position: relative;
-        padding: 1em;
-        border: solid 1px @CLight2;
-        background: @CSuperLight;
-        border-left-width: 1px;
-        margin-left: @timelineLeftPadding;
-
-        &:before{
-            content: '';
-            width: 0;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            background: @timelineBaseColor;
-            .transition(all 0.3s);
-        }
-    }
-
-    &:hover .timeline-dot{
-        box-shadow: 0 0 0 6px @timelineBaseColor;
-    }
-
-    &:hover .timeline-content:before{
-        opacity: 1;
-        width: 3px;
-    }
-}
-
-.event-content(){
-    h1{
-        margin-top: 0;
-    }
 }

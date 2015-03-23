@@ -1,10 +1,14 @@
-var React = require('react');
+var React = require('react'),
+    classnames = require('classnames');
+
 
 var FontIcon = React.createClass({
 
     render: function() {
+        var classes = classnames(this.props.className, 'font-icon');
+
         return (
-            <span className={this.props.className}/>
+            <span className={classes}/>
         );
     }
 
