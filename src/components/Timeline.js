@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
 class Timeline extends Component{
@@ -9,4 +9,4 @@ class Timeline extends Component{
     }
 }
 
-export default connect((state) => {})(Timeline);
+export default connect((state) => ({}))(Timeline);
