@@ -14,6 +14,9 @@ gulp.task('build', function(){
 gulp.task('copy', function() {
     gulp.src('src/index.html')
       .pipe(gulp.dest('dist'));
+      
+    gulp.src('src/data/timeline.json')
+      .pipe(gulp.dest('dist/data'));
 });
 
 gulp.task('default', ['build', 'copy']);
