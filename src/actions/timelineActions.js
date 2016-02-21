@@ -6,6 +6,13 @@ function fetchEvents(){
     return dispatch => {
         dispatch({type: FETCH_EVENTS});
         
-        let file = new File('./timeline.json');    
+        fetch('/api/getEvents')
+            .then(data => data.json())
+            .then(response => {
+                dispatch({type: FETCH_EVENTS_SUCCEEDED, data: response});
+            })
+            .catch(error => {
+                dispatch({type: FETCH_EVENTS_FAILED, error});
+            });
     };
 }
