@@ -2,13 +2,15 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Router, browserHistory, match } from 'react-router';
 import { Provider } from 'react-redux';
+import { trigger } from 'redial';
 import configureStore from './store/configureStore';
-import routes from './routes';
+import getRoutes from './routes';
 
 import App from './components/App';
 
 const store = configureStore(window.__data);
 const { dispatch } = store;
+const routes = getRoutes(store);
 
 browserHistory.listen(location => {
     match({routes, location}, (error, redirectLocation, renderProps) => {

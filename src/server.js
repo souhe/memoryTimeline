@@ -1,10 +1,15 @@
+import React from 'react';
+import ReactDOM from 'react-dom/server';
 import express from 'express';
 import http from 'http';
 import 'isomorphic-fetch';
-import { RouterContext, createMemoryHistory, match } from 'react-router';
+import { RouterContext, match } from 'react-router';
+import createMemoryHistory from 'react-router/lib/createMemoryHistory';
+import { Provider } from 'react-redux';
 import { trigger } from 'redial';
 import configureStore from './store/configureStore';
 import getRoutes from './routes';
+import Html from './components/Html';
 
 const app = express();
 const server = new http.Server(app);
@@ -31,7 +36,6 @@ app.use((req, res) => {
             console.error('ROUTER ERROR:', error);
             res.status(500);
         } else if (renderProps) {
-            console.log(renderProps);
             const {components} = renderProps;
             const locals = {
                 path: renderProps.location.pathname,
@@ -43,18 +47,22 @@ app.use((req, res) => {
             trigger('fetch', components, locals)
                 .then(() => {
                     const state = getState();
+
                     const component = (
-                        <Provider store={store}>
+                        <Provider store={store} key="provider">
                             <RouterContext {...renderProps} />
                         </Provider>
                     );
+
                     const assets = {
                         javascript: {
                             main: '../dist/main.js'
                         }
                     }; //TODO: change this
-                    const html = ReactDOM.renderToString(<Html assets={ assets } component={component} store={store}/>);
-                    
+                    console.log(ReactDOM.renderToString(<RouterContext {...renderProps} />));
+                    const html = ReactDOM.renderToString(<Html assets={assets} component={component} store={store}/>);
+                    console.log("HTML: ");
+                    console.log(html);
                     res.status(200);
                     res.send(`<!doctype html>\n ${html}`);
                 });

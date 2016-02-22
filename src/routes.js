@@ -5,7 +5,7 @@ import Timeline from './components/Timeline';
 
 export default (store) => {
     return (
-        <Route path="" component={App}>
+        <Route path="/" component={App}>
             <IndexRoute component={Timeline} />
         </Route>
     );
