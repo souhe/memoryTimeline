@@ -1,6 +1,6 @@
 require('babel-register')({
     presets: ['react', 'es2015'],
-    plugins: ['transform-decorators'],
+    plugins: ['transform-object-rest-spread'],
     sourceMap: 'inline',
 });
 

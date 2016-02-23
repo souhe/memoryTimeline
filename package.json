@@ -8,6 +8,7 @@
   },
   "author": "souhe",
   "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.5.0",
     "babel-register": "^6.5.2",
     "express": "^4.13.4",
     "http": "0.0.0",

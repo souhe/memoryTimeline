@@ -47,9 +47,9 @@ app.use((req, res) => {
             trigger('fetch', components, locals)
                 .then(() => {
                     const state = getState();
-
+                    
                     const component = (
-                        <Provider store={store} key="provider">
+                        <Provider store={store}>
                             <RouterContext {...renderProps} />
                         </Provider>
                     );
@@ -59,10 +59,8 @@ app.use((req, res) => {
                             main: '../dist/main.js'
                         }
                     }; //TODO: change this
-                    console.log(ReactDOM.renderToString(<RouterContext {...renderProps} />));
+                    
                     const html = ReactDOM.renderToString(<Html assets={assets} component={component} store={store}/>);
-                    console.log("HTML: ");
-                    console.log(html);
                     res.status(200);
                     res.send(`<!doctype html>\n ${html}`);
                 });

@@ -6,12 +6,13 @@ import { fetchEvents } from '../actions/timelineActions';
 class Timeline extends Component{
     render() {
         return (
-          <div>timeline</div>  
+          <div>{this.props.events}</div>  
         );
     }
 }
-export default connect(state => state)(Timeline);
+
 const withHooksTimeline = provideHooks({
     fetch: ({dispatch, params}) => dispatch(fetchEvents())
 })(Timeline);
 
+export default connect(state => ({events: state.events}))(withHooksTimeline);
