@@ -35,6 +35,8 @@
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.3.1",
+    "gulp-live-server": "0.0.29",
+    "node-notifier": "^4.5.0",
     "webpack": "^1.12.13",
     "webpack-stream": "^3.1.0"
   }
