@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import timelineReducer from './timelineReducer';
 
 const rootReducer = combineReducers({
-  timelineReducer
+    timeline: timelineReducer
 });
 
 export default rootReducer;

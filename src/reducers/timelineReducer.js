@@ -5,9 +5,9 @@ const initialState = {
 };
 
 export default function timelineReducer(state = initialState, action = {}){
-    console.log(action);
     switch(action.type){        
         case FETCH_EVENTS_SUCCEEDED: 
+            console.log('fetch_succeeded');
             return {
                 ...state, 
                 events: action.events

@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/server';
-import express from 'express';
+import Express from 'express';
 import http from 'http';
+import path from 'path';
 import 'isomorphic-fetch';
 import { RouterContext, match } from 'react-router';
 import createMemoryHistory from 'react-router/lib/createMemoryHistory';
@@ -11,9 +12,11 @@ import configureStore from './store/configureStore';
 import getRoutes from './routes';
 import Html from './components/Html';
 
-const app = express();
+const app = Express();
 const server = new http.Server(app);
 const config = require('./config');
+
+app.use(Express.static(path.join(__dirname, '..', 'dist')));
 
 app.get('/api/getEvents', (req, res) => {
     res.send(JSON.stringify([
@@ -56,7 +59,7 @@ app.use((req, res) => {
 
                     const assets = {
                         javascript: {
-                            main: '../dist/main.js'
+                            main: '../main.js'
                         }
                     }; //TODO: change this
                     

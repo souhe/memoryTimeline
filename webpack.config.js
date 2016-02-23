@@ -24,5 +24,12 @@ module.exports = {
                 loader: 'style!css!less' 
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            __CLIENT__: true,
+            __SERVER__: false
+        }),    
+    ],
+    devtool: "inline-source-map"
 }

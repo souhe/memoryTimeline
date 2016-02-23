@@ -6,10 +6,8 @@ import Helmet from 'react-helmet';
 class Html extends Component {
     render() {
         const {assets, component, store} = this.props;
-        console.log(assets)
         const content = component ? ReactDOM.renderToString(component) : '';
         const head = Helmet.rewind();
-        console.log(content)
         return (
             <html lang="en-us">
                 <head>
