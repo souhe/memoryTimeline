@@ -6,7 +6,7 @@ export const FETCH_EVENTS_FAILED = 'FETCH_EVENTS_FAILED';
 export function fetchEvents(){
     return dispatch => {
         dispatch({type: FETCH_EVENTS});
-        fetch(formatUrl('/api/getEvents'))
+        return fetch(formatUrl('/api/getEvents'))
             .then(response => response.json())
             .then(data => {
                 console.log(data);

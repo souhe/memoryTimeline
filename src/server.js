@@ -50,7 +50,7 @@ app.use((req, res) => {
             trigger('fetch', components, locals)
                 .then(() => {
                     const state = getState();
-                    
+
                     const component = (
                         <Provider store={store}>
                             <RouterContext {...renderProps} />

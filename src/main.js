@@ -23,8 +23,12 @@ browserHistory.listen(location => {
             dispatch    
         };
         
-        //TODO: Don't fetch data for initial route     
-        trigger('fetch', components, locals);
+        if (window.__data) {
+            delete window.__data;
+        } else {
+            trigger('fetch', components, locals);
+        }
+
         trigger('defer', components, locals);
     }); 
 });
