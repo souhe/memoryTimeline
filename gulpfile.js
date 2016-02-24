@@ -9,8 +9,7 @@ var notifier = require('node-notifier');
 function build(){
     return gulp.src('src/main.js')
         .pipe(webpack(webpackConfig))
-        .pipe(concat('main.js'))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist/'));
 }
 
 gulp.task('serve', function() {

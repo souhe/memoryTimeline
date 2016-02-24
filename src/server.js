@@ -8,6 +8,8 @@ import { RouterContext, match } from 'react-router';
 import createMemoryHistory from 'react-router/lib/createMemoryHistory';
 import { Provider } from 'react-redux';
 import { trigger } from 'redial';
+import fs from 'fs';
+
 import configureStore from './store/configureStore';
 import getRoutes from './routes';
 import Html from './components/Html';
@@ -16,21 +18,33 @@ const app = Express();
 const server = new http.Server(app);
 const config = require('./config');
 
-app.use(Express.static(path.join(__dirname, '..', 'dist')));
+app.use('/dist', Express.static(path.join(__dirname, '..', 'dist')));
 
 app.get('/api/getEvents', (req, res) => {
-    res.send(JSON.stringify([
-        {
-            name: "test"
-        }
-    ]));
+    let content = fs.readFile('./dist/data/timeline.json', (error, contents) => {
+        res.send(contents);
+        });
 });
 
 app.use((req, res) => {
+    if (__DEVELOPMENT__) {
+        webpackIsomorphicTools.refresh();
+    }
+    
     const history = createMemoryHistory(req.originalUrl);
     const store = configureStore();
     const {dispatch, getState} = store;
-    const routes = getRoutes(store);
+    const routes = getRoutes(store)
+    
+    function hydrateOnClient() {
+        res.send('<!doctype html>\n' +
+        ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} store={store}/>));
+    }
+    
+    if (__DISABLE_SSR__) {
+        hydrateOnClient();
+        return;
+    }
 
     match({ history, routes, location: req.originalUrl }, (error, redirectLocaion, renderProps) => {
         if (redirectLocaion) {
@@ -56,14 +70,8 @@ app.use((req, res) => {
                             <RouterContext {...renderProps} />
                         </Provider>
                     );
-
-                    const assets = {
-                        javascript: {
-                            main: '../main.js'
-                        }
-                    }; //TODO: change this
                     
-                    const html = ReactDOM.renderToString(<Html assets={assets} component={component} store={store}/>);
+                    const html = ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store}/>);
                     res.status(200);
                     res.send(`<!doctype html>\n ${html}`);
                 });

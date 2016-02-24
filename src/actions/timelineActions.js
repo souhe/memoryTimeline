@@ -9,8 +9,7 @@ export function fetchEvents(){
         return fetch(formatUrl('/api/getEvents'))
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                dispatch({type: FETCH_EVENTS_SUCCEEDED, events: data});
+                dispatch({type: FETCH_EVENTS_SUCCEEDED, events: data.events, title: data.title});
             })
             .catch(error => {
                 dispatch({type: FETCH_EVENTS_FAILED, error});

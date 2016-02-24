@@ -10,9 +10,12 @@
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.5.0",
     "babel-register": "^6.5.2",
+    "css-loader": "^0.23.1",
     "express": "^4.13.4",
     "http": "0.0.0",
     "isomorphic-fetch": "^2.2.1",
+    "less": "^2.6.0",
+    "less-loader": "^2.2.2",
     "path": "^0.12.7",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
@@ -23,7 +26,8 @@
     "redial": "^0.4.1",
     "redux": "^3.3.1",
     "redux-thunk": "^1.0.3",
-    "serialize-javascript": "^1.1.2"
+    "serialize-javascript": "^1.1.2",
+    "webpack-isomorphic-tools": "^2.2.30"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
@@ -32,6 +36,7 @@
     "babel-plugin-transform-decorators": "^6.5.0",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.3.1",
