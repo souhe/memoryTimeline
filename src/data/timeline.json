@@ -1,0 +1,23 @@
+{
+    "title": "",
+    "events": [
+        {
+            "startDate": "07/2000",
+            "endDate": "",
+            "title": "title1",
+            "tags": [""],
+            "description": "",
+            "people": [],
+            "gallery": ""
+        },
+        {
+            "startDate": "07/2000",
+            "endDate": "",
+            "title": "title2",
+            "tags": [""],
+            "description": "",
+            "people": [],
+            "gallery": ""
+        }          
+    ]
+}
